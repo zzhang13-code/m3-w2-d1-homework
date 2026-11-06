@@ -84,7 +84,10 @@ async function main() {
     } else if (task === 8) {
         const sorted = await census.find().sort({ state: 1 }).toArray();
         console.log('Records sorted by state:');
-        console.log(sorted);
+        sorted.forEach(function (record) {
+            console.log(record.state + ' - ' + record.city + ' - ' + record.zip +
+                ' - income ' + record.income + ' - age ' + record.age);
+        });
     } else {
         console.log('Run node app.js with a task number from 1 to 8.');
     }
